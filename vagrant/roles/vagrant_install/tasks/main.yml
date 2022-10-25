@@ -1,2 +1,12 @@
 ---
-# tasks file for vagrant_install
+# tasks file for vagrant
+- name: Install Packages
+  ansible.builtin.dnf:
+    state: latest
+    name:
+      - qemu-kvm 
+      - libvirt 
+      - libguestfs-tools 
+      - virt-install 
+      - rsync
+      - vagrant

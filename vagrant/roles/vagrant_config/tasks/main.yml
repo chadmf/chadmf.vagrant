@@ -1,2 +1,27 @@
 ---
 # tasks file for vagrant_config
+- name: Create Vagrant directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    mode: 0775 
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+  loop:
+    - "/home/{{ ansible_user_id }}/vagrant"
+    - "/home/{{ ansible_user_id }}/vagrant/rhel8"
+    - "/home/{{ ansible_user_id }}/vagrant/rhel9"
+    - "/home/{{ ansible_user_id }}/vagrant/centos9s"
+    - "/home/{{ ansible_user_id }}/vagrant/centos8s"
+    - "/home/{{ ansible_user_id }}/vagrant/fedora36"
+
+- name: init vagrant for each os type
+  ansible.builtin.shell:
+    cmd: "vagrant init generic/{{ item }}"
+    chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
+    creates: Vagrantfile
+  loop: 
+    - rhel9
+    - rhel8
+    - centos9s
+    - centos8s
+    - fedora36

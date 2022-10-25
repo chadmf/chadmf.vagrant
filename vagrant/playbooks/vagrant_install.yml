@@ -1,6 +1,7 @@
 ---
 - name: Run vagrant_install role
   hosts: all
+  become: true
   tasks:
     - name: run the role
       ansible.builtin.import_role:
