@@ -4,4 +4,4 @@
   tasks:
     - name: run the role
       ansible.builtin.import_role:
-        name: chadmf.vagrant_down
+        name: chadmf.vagrant.vagrant_down

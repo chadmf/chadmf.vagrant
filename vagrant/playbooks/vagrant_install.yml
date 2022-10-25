@@ -5,4 +5,4 @@
   tasks:
     - name: run the role
       ansible.builtin.import_role:
-        name: chadmf.vagrant_install
+        name: chadmf.vagrant.vagrant_install
