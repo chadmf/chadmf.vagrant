@@ -6,6 +6,7 @@
     mode: 0775 
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
+    state: directory
   loop:
     - "/home/{{ ansible_user_id }}/vagrant"
     - "/home/{{ ansible_user_id }}/vagrant/rhel8"
