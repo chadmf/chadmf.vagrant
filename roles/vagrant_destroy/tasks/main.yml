@@ -2,7 +2,8 @@
 # tasks file for vagrant_destroy
 - name: vagrant destroy for each os type
   ansible.builtin.command:
-    cmd: vagrant destroy
+    cmd: vagrant destroy --force
+    chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   loop: 
     - rhel9
     - rhel8
