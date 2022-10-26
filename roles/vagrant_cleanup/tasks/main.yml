@@ -18,3 +18,12 @@
     - rhel8
     - centos9s
     - fedora36
+
+- name: virsh undefine domains/vms
+  ansible.builtin.command:
+    cmd: "virsh undefine {{ item }}_default --remove-all-storage"
+  loop: 
+    - rhel9
+    - rhel8
+    - centos9s
+    - fedora36
