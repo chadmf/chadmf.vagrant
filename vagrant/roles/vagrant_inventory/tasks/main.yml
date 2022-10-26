@@ -20,6 +20,6 @@
 
 - name: update local ansible file to know where inventory is
   ansible.builtin.template:
-    src: templates/ansible.cfg
+    src: templates/ansiblecfg.j2
     dest: "/home/{{ ansible_user_id }}/.ansible.cfg"
    
