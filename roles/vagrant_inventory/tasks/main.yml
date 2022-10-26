@@ -21,9 +21,17 @@
     src: templates/ansiblecfg.j2
     dest: "/home/{{ ansible_user_id }}/.ansible.cfg"
 
+- name: Create Vagrant directory
+  ansible.builtin.file:
+    path: "/home/{{ ansible_user_id }}/.ssh/config"
+    mode: 0600 
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    state: touch
+
 - name: copy ssh config to .ssh/config
   ansible.builtin.shell:
-    cmd: vagrant ssh-config >> ~/.ssh/config
+    cmd: "vagrant ssh-config --host {{ item }} >> /home/{{ ansible_user_id }}/.ssh/config"
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: result
   loop: 
