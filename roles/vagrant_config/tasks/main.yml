@@ -12,11 +12,10 @@
     - "/home/{{ ansible_user_id }}/vagrant/rhel8"
     - "/home/{{ ansible_user_id }}/vagrant/rhel9"
     - "/home/{{ ansible_user_id }}/vagrant/centos9s"
-    - "/home/{{ ansible_user_id }}/vagrant/centos8s"
     - "/home/{{ ansible_user_id }}/vagrant/fedora36"
 
 - name: init vagrant for each os type
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "vagrant init generic/{{ item }}"
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
     creates: Vagrantfile
@@ -24,5 +23,4 @@
     - rhel9
     - rhel8
     - centos9s
-    - centos8s
     - fedora36

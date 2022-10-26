@@ -1,7 +1,7 @@
 ---
 # tasks file for vagrant_up
 - name: vagrant up for each os type
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: vagrant up
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   loop: 

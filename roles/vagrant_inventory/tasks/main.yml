@@ -1,7 +1,7 @@
 ---
 # tasks file for vagrant_inventory
 - name: get ip address and assign to variable to update inventory
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: vagrant ssh-config | grep HostName | awk '{ print $2 }' 
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: result
@@ -9,7 +9,6 @@
     - rhel9
     - rhel8
     - centos9s
-    - centos8s
     - fedora36
 
 - name: create inventory file
@@ -23,7 +22,7 @@
     dest: "/home/{{ ansible_user_id }}/.ansible.cfg"
 
 - name: copy ssh config to .ssh/config
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: vagrant ssh-config >> ~/.ssh/config
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: result
@@ -31,5 +30,4 @@
     - rhel9
     - rhel8
     - centos9s
-    - centos8s
     - fedora36

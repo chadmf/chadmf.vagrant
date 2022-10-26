@@ -1,7 +1,7 @@
 ---
 # tasks file for vagrant_down
 - name: vagrant halt for each os type
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: vagrant halt
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: up_info
@@ -9,5 +9,4 @@
     - rhel9
     - rhel8
     - centos9s
-    - centos8s
     - fedora36

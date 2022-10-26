@@ -1,12 +1,12 @@
 # Ansible Collection - chadmf.vagrant
 
-Simple collection to build multiple servers for Ansible testing including Rhel 8, rhel9, Centos8s Centos9s and fedora 36. Testing was done on all above operating systems as well. This will also set up ~/.ansible.cfg to use the inventory file it creates in ~/vagrant/inventory.ini. Hopefully turn key lab environment. All comments are welcome via PR or issues!
+Simple collection to build multiple servers for Ansible testing including Rhel 8, rhel9, Centos9s and fedora 36. Testing was done on all above operating systems as well. This will also set up ~/.ansible.cfg to use the inventory file it creates in ~/vagrant/inventory.ini. Hopefully turn key lab environment. All comments are welcome via PR or issues!
 
 Playbooks directory contains playbooks to run the roles.
 
 ## Getting Started
 
-### Install the collection:
+### Install the collection
 
 ```shell
 ansible-galaxy collection install git+https://github.com/chadmf/chadmf.vagrant
@@ -14,7 +14,7 @@ ansible-galaxy collection install git+https://github.com/chadmf/chadmf.vagrant
 
 ### Install everything in one playbook
 
-Does all of the things below (besides the destroy and cleanup) to spin up 5 small vms for testing.
+Does all of the things below (besides the destroy and cleanup) to spin up 4 small vms for testing. **NOTE**: this assumes you have an inventory file with [all] in it. If you do not you may want to change the all to localhost to run locally in the playbook.
 
 ```shell
 ansible-playbook playbooks/vagrant_all.yml
@@ -36,7 +36,7 @@ This will create directories in /home/{{ ansible_user_id }}/vagrant/osname as we
 ansible-playbook playbooks/vagrant_config.yml
 ```
 
-### Vagrant up 
+### Vagrant up
 
 Starts the vms
 
@@ -44,7 +44,7 @@ Starts the vms
 ansible-playbook playbooks/vagrant_up.yml
 ```
 
-### Vagrant down 
+### Vagrant down
 
 Stops the vm
 
@@ -52,7 +52,7 @@ Stops the vm
 ansible-playbook playbooks/vagrant_down.yml
 ```
 
-### Vagrant destroy 
+### Vagrant destroy
 
 Destroys the vms
 

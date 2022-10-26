@@ -1,13 +1,12 @@
 ---
 # tasks file for vagrant_destroy
 - name: vagrant destroy for each os type
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: vagrant destroy
   loop: 
     - rhel9
     - rhel8
     - centos9s
-    - centos8s
     - fedora36
 
 

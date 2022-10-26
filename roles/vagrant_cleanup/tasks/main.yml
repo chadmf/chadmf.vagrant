@@ -10,12 +10,11 @@
     dest: "/home/{{ ansible_user_id }}/vagrant"
     state: absent
 
-- name: virsh undefine domains/vms
-  ansible.builtin.shell:
+- name: virsh destroy domains/vms
+  ansible.builtin.command:
     cmd: "virsh destroy {{ item }}_default"
   loop: 
     - rhel9
     - rhel8
     - centos9s
-    - centos8s
     - fedora36
