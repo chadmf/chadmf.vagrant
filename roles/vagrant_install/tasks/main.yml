@@ -10,3 +10,17 @@
       - virt-install 
       - rsync
       - vagrant
+
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: add ssh conf for new ssh keys
+  ansible.builtin.shell:
+     cmd: "echo IdentityFile /home/{{ remote_regular_user }}/.ssh/{{ item }} >> /etc/ssh/ssh_config.d/vagrant.conf"
+     creates: /etc/ssh/ssh_config.d/vagrant.conf
+  loop:
+    - rhel9
+    - rhel8
+    - centos9s
+    - fedora36
