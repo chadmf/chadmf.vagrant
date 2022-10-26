@@ -23,7 +23,6 @@
         
 - name: Run vagrant_inventory role
   hosts: all
-  gather_facts: false
   tasks:
     - name: run the role
       ansible.builtin.import_role:
