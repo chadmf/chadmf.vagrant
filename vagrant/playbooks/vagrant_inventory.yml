@@ -1,7 +1,7 @@
 ---
-- name: Run vagrant_up role
+- name: Run vagrant_inventory role
   hosts: all
   tasks:
     - name: run the role
       ansible.builtin.import_role:
-        name: chadmf.vagrant.vagrant_up
+        name: chadmf.vagrant.vagrant_inventory

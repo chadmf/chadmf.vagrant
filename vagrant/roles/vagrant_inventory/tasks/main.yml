@@ -1,0 +1,25 @@
+---
+# tasks file for vagrant_inventory
+- name: update ansible inventory file for vagrant vms
+  ansible.builtin.shell:
+    cmd: vagrant ssh-config|grep HostName|awk '{ print $2 } 
+    chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
+    creates: Vagrantfile
+  register: result
+  loop: 
+    - rhel9
+    - rhel8
+    - centos9s
+    - centos8s
+    - fedora36
+
+- name: create inventory file
+  ansible.builtin.template:
+    src: templates/inventory.j2
+    dest: /home/{{ ansible_user_id }}/vagrant/inventory.ini
+
+- name: update local ansible file to know where inventory is
+  ansible.builtin.template:
+    src: templates/ansible.cfg
+    dest: "/home/{{ ansible_user_id }}/.ansible.cfg"
+   
