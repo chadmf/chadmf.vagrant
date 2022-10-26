@@ -1,0 +1,21 @@
+---
+# tasks file for vagrant_cleanup
+- name: remove.ssh/config
+  ansible.builtin.file:
+    dest: "/home/{{ ansible_user_id }}/.ssh/config"
+    state: absent
+
+- name: remove vagrant directories
+  ansible.builtin.file:
+    dest: "/home/{{ ansible_user_id }}/vagrant"
+    state: absent
+
+- name: virsh undefine domains/vms
+  ansible.builtin.shell:
+    cmd: "virsh destroy {{ item }}_default"
+  loop: 
+    - rhel9
+    - rhel8
+    - centos9s
+    - centos8s
+    - fedora36

@@ -1,0 +1,7 @@
+---
+- name: Run vagrant_cleanup role
+  hosts: all
+  tasks:
+    - name: run the role
+      ansible.builtin.import_role:
+        name: chadmf.vagrant.vagrant_cleanup

@@ -1,8 +1,8 @@
 ---
 # tasks file for vagrant_down
-- name: vagrant up for each os type
+- name: vagrant halt for each os type
   ansible.builtin.shell:
-    cmd: vagrant down
+    cmd: vagrant halt
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: up_info
   loop: 
