@@ -4,7 +4,6 @@
   ansible.builtin.shell:
     cmd: vagrant down
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
-    creates: Vagrantfile
   register: up_info
   loop: 
     - rhel9

@@ -4,15 +4,9 @@
   ansible.builtin.shell:
     cmd: vagrant up
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
-    creates: Vagrantfile
-  register: up_info
   loop: 
     - rhel9
     - rhel8
     - centos9s
     - centos8s
     - fedora36
-
-- name: debug up_info to get ip addresses of systems
-  debug: 
-    msg: "upinfo is {{ up_info }}"

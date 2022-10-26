@@ -1,8 +1,7 @@
 [all]
 {% for item in result.results %}
-{{ item }}
+{{ item.stdout }} 
 {% endfor %}
 
 [all:vars]
 ansible_user=vagrant
-ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
