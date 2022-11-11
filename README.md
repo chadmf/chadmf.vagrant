@@ -6,10 +6,11 @@ Playbooks directory contains playbooks to run the roles.
 
 ## Getting Started
 
-### Install the collection
+### Install the collection and dependencies 
 
 ```shell
 ansible-galaxy collection install git+https://github.com/chadmf/chadmf.vagrant
+ansible-galaxy collection install community.general
 ```
 
 ### Install everything in one playbook
