@@ -10,4 +10,8 @@
     - centos9s
     - fedora36
 
-
+# tasks file for vagrant_cleanup
+- name: remove vagrant directories
+  ansible.builtin.file:
+    dest: "/home/{{ ansible_user_id }}/vagrant"
+    state: absent
