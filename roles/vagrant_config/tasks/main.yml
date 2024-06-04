@@ -2,14 +2,13 @@
 # tasks file for vagrant_config
 - name: Create Vagrant directory
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
     mode: 0775 
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     state: directory
-  loop:
-    - "/home/{{ ansible_user_id }}/vagrant"
-    - "/home/{{ ansible_user_id }}/vagrant/rhel9"
+  loop: "{{ os_ver }}"
+
 
 - name: init vagrant box for each os type
   ansible.builtin.command:
