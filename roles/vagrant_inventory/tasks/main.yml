@@ -5,11 +5,7 @@
     cmd: vagrant ssh-config | grep HostName | awk '{ print $2 }' 
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: result
-  loop: 
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"
 
 - name: create inventory file
   ansible.builtin.template:
@@ -26,19 +22,13 @@
     src: "/home/{{ ansible_user_id }}/vagrant/{{ item }}/.vagrant/machines/default/libvirt/private_key"
     dest: "/home/{{ ansible_user_id }}/.ssh/{{ item }}"
     state: link
-  loop: 
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"
 
 - name: add ssh conf for new ssh keys
   ansible.builtin.command:
     cmd: "echo ~/.ssh/{{ item }} >> home/{{ ansible_user_id }}/vagrant/vagrant.conf"
-  loop:
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"
+
+
 
     

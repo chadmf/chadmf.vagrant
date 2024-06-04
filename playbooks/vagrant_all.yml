@@ -1,31 +1,28 @@
 ---
-
-
-
-- name: Run vagrant_install role
-  hosts: all
+- name: Run vagrant_instlocalhost role
+  hosts: localhost
   become: true
   tasks:
-    - name: Run vagrant_install role
+    - name: Run vagrant_instlocalhost role
       ansible.builtin.import_role:
         name: chadmf.vagrant.vagrant_install
 
 - name: Run vagrant_config role
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Run vagrant_config role
       ansible.builtin.import_role:
         name: chadmf.vagrant.vagrant_config
         
 - name: Run vagrant_up role
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Run vagrant_up role
       ansible.builtin.import_role:
         name: chadmf.vagrant.vagrant_up
         
 - name: Run vagrant_inventory role
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Run vagrant_inventory role
       ansible.builtin.import_role:

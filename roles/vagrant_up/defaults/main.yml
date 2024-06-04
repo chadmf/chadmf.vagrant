@@ -1,2 +1,5 @@
 ---
 # defaults file for vagrant_up
+os_ver:
+  - rhel9
+  - rhel8

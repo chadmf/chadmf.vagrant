@@ -1,6 +1,6 @@
 ---
 - name: Run vagrant_down role
-  hosts: all
+  hosts: localhost
   tasks:
     - name: run the role
       ansible.builtin.import_role:

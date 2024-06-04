@@ -1,6 +1,6 @@
 ---
 - name: Run vagrant_cleanup role
-  hosts: all
+  hosts: localhost
   ignore_errors: True
   tasks:
     - name: run the role

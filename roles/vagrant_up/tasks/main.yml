@@ -4,8 +4,5 @@
   ansible.builtin.command:
     cmd: vagrant up
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
-  loop: 
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"
+

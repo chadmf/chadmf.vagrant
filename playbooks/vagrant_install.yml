@@ -1,6 +1,6 @@
 ---
 - name: Run vagrant_install role
-  hosts: all
+  hosts: localhost
   become: true
   tasks:
     - name: run the role

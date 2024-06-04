@@ -5,8 +5,4 @@
     cmd: vagrant halt
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
   register: up_info
-  loop: 
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"

@@ -9,18 +9,16 @@
     state: directory
   loop:
     - "/home/{{ ansible_user_id }}/vagrant"
-    - "/home/{{ ansible_user_id }}/vagrant/rhel8"
     - "/home/{{ ansible_user_id }}/vagrant/rhel9"
-    - "/home/{{ ansible_user_id }}/vagrant/centos9s"
-    - "/home/{{ ansible_user_id }}/vagrant/fedora36"
+
+- name: init vagrant box for each os type
+  ansible.builtin.command:
+    cmd: "vagrant box add generic/{{ item }} --provider=libvirt --force"
+  loop: "{{ os_ver }}"
 
 - name: init vagrant for each os type
   ansible.builtin.command:
     cmd: "vagrant init generic/{{ item }}"
     chdir: "/home/{{ ansible_user_id }}/vagrant/{{ item }}"
     creates: Vagrantfile
-  loop: 
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"

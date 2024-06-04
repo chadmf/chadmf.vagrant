@@ -1,2 +1,5 @@
 ---
 # defaults file for vagrant_inventory
+os_ver:
+  - rhel9
+  - rhel8

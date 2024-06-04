@@ -10,6 +10,11 @@
       - virt-install 
       - rsync
       - vagrant
+      - vagrant-libvirt
+
+- name: vagrant plugin install vagrant-libvirt
+  ansible.builtin.command:
+    cmd: vagrant plugin install vagrant-libvirt
 
 - name: get the non root remote user
   set_fact:
@@ -19,8 +24,4 @@
   ansible.builtin.shell:
      cmd: "echo IdentityFile /home/{{ remote_regular_user }}/.ssh/{{ item }} >> /etc/ssh/ssh_config.d/vagrant.conf"
      creates: /etc/ssh/ssh_config.d/vagrant.conf
-  loop:
-    - rhel9
-    - rhel8
-    - centos9s
-    - fedora36
+  loop: "{{ os_ver }}"
