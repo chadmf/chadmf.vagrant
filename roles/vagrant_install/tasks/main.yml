@@ -25,3 +25,13 @@
      cmd: "echo IdentityFile /home/{{ remote_regular_user }}/.ssh/{{ item }} >> /etc/ssh/ssh_config.d/vagrant.conf"
      creates: /etc/ssh/ssh_config.d/vagrant.conf
   loop: "{{ os_ver }}"
+
+- name: ensure libvirtd network service is enabled
+  ansible.builtin.service:
+    name: virtnetworkd
+    enabled: true
+
+- name: ensure libvirtd network service is running
+  ansible.builtin.service:
+    name: virtnetworkd
+    state: running
