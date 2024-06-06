@@ -9,7 +9,6 @@
     state: directory
   loop: "{{ os_ver }}"
 
-
 - name: init vagrant box for each os type
   ansible.builtin.command:
     cmd: "vagrant box add generic/{{ item }} --provider=libvirt --force"
